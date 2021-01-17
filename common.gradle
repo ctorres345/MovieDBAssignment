@@ -1,0 +1,13 @@
+ext.commonlibs = [:]
+
+commonlibs.kotlin = [
+        [configuration: "implementation", dependency: dependency.kotlin.core],
+        [configuration: "implementation", dependency: dependency.kotlin.coroutine],
+        [configuration: "testImplementation", dependency: dependency.kotlin.coroutine_test]
+]
+
+commonlibs.test = [
+        [configuration: "testImplementation", dependency: dependency.test.junit],
+        [configuration: "androidTestImplementation", dependency: dependency.test.junit_android],
+        [configuration: "androidTestImplementation", dependency: dependency.test.espresso]
+]
