@@ -1,0 +1,4 @@
+apply from: "${rootProject.getRootDir()}/versions.gradle"
+apply from: "${rootProject.getRootDir()}/libpath.gradle"
+apply from: "${rootProject.getRootDir()}/common.gradle"
+apply from: "${rootProject.getRootDir()}/moduledependencies.gradle"

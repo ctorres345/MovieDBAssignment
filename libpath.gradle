@@ -1,0 +1,55 @@
+ext.dependency = [:]
+
+def kotlin = [:]
+kotlin.classpath = "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+kotlin.core = "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+kotlin.coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin_coroutine}"
+kotlin.coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlin_coroutine}"
+dependency.kotlin = kotlin
+
+def core = [:]
+core.core = "androidx.core:core-ktx:${versions.core}"
+core.app_compat = "androidx.appcompat:appcompat:${versions.appCompat}"
+core.fragment_ktx = "androidx.fragment:fragment-ktx:${versions.fragment_ktx}"
+core.material = "com.google.android.material:material:${versions.material}"
+core.constraint = "androidx.constraintlayout:constraintlayout:${versions.constraint}"
+dependency.core = core
+
+def test = [:]
+test.junit = "junit:junit:${versions.junit}"
+test.junit_android = "androidx.test.ext:junit:${versions.junit_adroid}"
+test.espresso = "androidx.test.espresso:espresso-core:${versions.espresso}"
+dependency.test = test
+
+def navigation = [:]
+navigation.classpath = "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}"
+navigation.fragment = "androidx.navigation:navigation-fragment-ktx:${versions.navigation}"
+navigation.runtime = "androidx.navigation:navigation-runtime-ktx:${versions.navigation}"
+navigation.ui = "androidx.navigation:navigation-ui-ktx:${versions.navigation}"
+dependency.navigation = navigation
+
+def lifecycle = [:]
+lifecycle.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+lifecycle.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}"
+dependency.lifecycle = lifecycle
+
+def retrofit = [:]
+retrofit.core  = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+retrofit.gson_adapter  = "com.squareup.retrofit2:converter-gson:${versions.gson_adapter}"
+retrofit.okhttp_interceptor  = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_interceptor}"
+dependency.retrofit = retrofit
+
+def dagger = [:]
+dagger.classpath = "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}"
+dagger.core = "com.google.dagger:dagger:${versions.dagger}"
+dagger.core_compiler = "com.google.dagger:dagger-compiler:${versions.dagger}"
+dagger.hilt = "com.google.dagger:hilt-android:${versions.hilt}"
+dagger.hilt_compiler = "com.google.dagger:hilt-android-compiler:${versions.hilt}"
+dagger.viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:${versions.hilt_x}"
+dagger.viewmodel_compiler = "androidx.hilt:hilt-compiler:${versions.hilt_x}"
+dependency.dagger = dagger
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:${versions.glide}"
+glide.compiler = "com.github.bumptech.glide:compiler:${versions.glide}"
+dependency.glide = glide

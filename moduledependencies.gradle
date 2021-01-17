@@ -1,0 +1,37 @@
+ext{
+    app_dependencies = [
+            [configuration: "implementation", dependency: dependency.core.core],
+            [configuration: "implementation", dependency: dependency.core.app_compat],
+            [configuration: "implementation", dependency: dependency.core.material],
+            [configuration: "implementation", dependency: dependency.core.constraint],
+            [configuration: "implementation", dependency: dependency.core.fragment_ktx],
+            [configuration: "implementation", dependency: dependency.navigation.runtime],
+            [configuration: "implementation", dependency: dependency.navigation.fragment],
+            [configuration: "implementation", dependency: dependency.navigation.ui],
+            [configuration: "implementation", dependency: dependency.lifecycle.viewmodel],
+            [configuration: "implementation", dependency: dependency.lifecycle.livedata],
+            [configuration: "implementation", dependency: dependency.dagger.hilt],
+            [configuration: "kapt", dependency: dependency.dagger.hilt_compiler],
+            [configuration: "kaptTest", dependency: dependency.dagger.hilt_compiler],
+            [configuration: "kaptAndroidTest", dependency: dependency.dagger.hilt_compiler],
+            [configuration: "implementation", dependency: dependency.dagger.viewmodel],
+            [configuration: "kapt", dependency: dependency.dagger.viewmodel_compiler],
+            [configuration: "implementation", dependency: dependency.glide.runtime],
+            [configuration: "kapt", dependency: dependency.glide.compiler]
+    ] + commonlibs.kotlin + commonlibs.test
+
+    data_dependencies = [
+            [configuration: "implementation", dependency: dependency.retrofit.core],
+            [configuration: "implementation", dependency: dependency.retrofit.gson_adapter],
+            [configuration: "implementation", dependency: dependency.retrofit.okhttp_interceptor],
+            [configuration: "implementation", dependency: dependency.dagger.hilt],
+            [configuration: "kapt", dependency: dependency.dagger.hilt_compiler],
+            [configuration: "kaptAndroidTest", dependency: dependency.dagger.hilt_compiler],
+            [configuration: "kaptTest", dependency: dependency.dagger.hilt_compiler]
+    ] + commonlibs.kotlin
+
+    domain_dependencies = [
+            [configuration: "implementation", dependency: dependency.dagger.core],
+            [configuration: "kapt", dependency: dependency.dagger.core_compiler]
+    ] + commonlibs.kotlin
+}
