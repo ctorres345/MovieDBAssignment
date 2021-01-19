@@ -22,16 +22,16 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun getMovies() {
         viewModelScope.launch {
-            val billboardResult = getMoviePageUseCase.execute(page = 1, section = MovieSection.Billboard)
-            val popularResult = getMoviePageUseCase.execute(page = 1, section = MovieSection.Popular)
-            val billboardMovies = when(billboardResult){
+            //Get Billboard Movies first
+            val billboardMovies = when(val billboardResult = getMoviePageUseCase.execute(page = 1, section = MovieSection.Billboard)){
                 is Try.Failure -> {
                     viewState.postValue(HomeViewState.GetBillboardMoviesError)
                     return@launch
                 }
                 is Try.Success -> billboardResult.value.results.map { it.toBillboardMovie() }
             }
-            val popularMovies = when(popularResult){
+            //Get Popular Movies
+            val popularMovies = when(val popularResult = getMoviePageUseCase.execute(page = 1, section = MovieSection.Popular)){
                 is Try.Failure -> {
                     viewState.postValue(HomeViewState.GetPopularMoviesError)
                     return@launch
@@ -42,6 +42,7 @@ class HomeViewModel @ViewModelInject constructor(
                     popularResult.value.results.map { it.toPopularMovie() }
                 }
             }
+            //Return both results
             viewState.postValue(
                 HomeViewState.GetMoviesSuccess(
                     billboardMovies = billboardMovies,
