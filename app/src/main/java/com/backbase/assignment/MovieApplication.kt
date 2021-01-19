@@ -1,7 +1,7 @@
 package com.backbase.assignment
 
 import android.app.Application
-import com.example.data.repository.local.SessionManager
+import com.example.data.SessionManager
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
 

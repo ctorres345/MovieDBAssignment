@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="traslucent_dialog_background">#80000000</color>
+    <color name="home_background">#404040</color>
+    <color name="popular_movie_background">#212121</color>
+    <color name="movie_gray">#828282</color>
+    <color name="movie_yellow">#fcd052</color>
+    <color name="yellow_fill_rating">#d1d530</color>
+    <color name="yellow_bg_rating">#413e0e</color>
+    <color name="green_fill_rating">#1ed07a</color>
+    <color name="green_bg_rating">#204428</color>
 </resources>

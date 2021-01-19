@@ -17,7 +17,10 @@ ext{
             [configuration: "implementation", dependency: dependency.dagger.viewmodel],
             [configuration: "kapt", dependency: dependency.dagger.viewmodel_compiler],
             [configuration: "implementation", dependency: dependency.glide.runtime],
-            [configuration: "kapt", dependency: dependency.glide.compiler]
+            [configuration: "kapt", dependency: dependency.glide.compiler],
+            [configuration: "implementation", dependency: dependency.room.runtime],
+            [configuration: "implementation", dependency: dependency.room.ktx],
+            [configuration: "kapt", dependency: dependency.room.compiler]
     ] + commonlibs.kotlin + commonlibs.test
 
     data_dependencies = [
@@ -27,7 +30,10 @@ ext{
             [configuration: "implementation", dependency: dependency.dagger.hilt],
             [configuration: "kapt", dependency: dependency.dagger.hilt_compiler],
             [configuration: "kaptAndroidTest", dependency: dependency.dagger.hilt_compiler],
-            [configuration: "kaptTest", dependency: dependency.dagger.hilt_compiler]
+            [configuration: "kaptTest", dependency: dependency.dagger.hilt_compiler],
+            [configuration: "implementation", dependency: dependency.room.runtime],
+            [configuration: "implementation", dependency: dependency.room.ktx],
+            [configuration: "kapt", dependency: dependency.room.compiler]
     ] + commonlibs.kotlin
 
     domain_dependencies = [

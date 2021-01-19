@@ -25,6 +25,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "MOVIE_API_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "MOVIE_API_TOKEN", "\"ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaGRXUWlPaUk1TkRFeFlUUmhaVFUwT0dNeE1UWXhPRGM1WkRBME5UUm1NREpoWlRZeU9DSXNJbk4xWWlJNklqWXdNRFEzT0RVNE1URXdPR0U0TURBelpEa3dNakUwTWlJc0luTmpiM0JsY3lJNld5SmhjR2xmY21WaFpDSmRMQ0oyWlhKemFXOXVJam94ZlEuVlhXYV8tOHRta0lpcDRNWGVsU0xVRmhWUUJFLWJYZ1dOQWZVQWFyMFpnTQ==\""
+            buildConfigField "String", "DB_NAME", "\"MoviesDB\""
         }
         debug {
             minifyEnabled false
@@ -32,6 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "MOVIE_API_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "MOVIE_API_TOKEN", "\"ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKaGRXUWlPaUk1TkRFeFlUUmhaVFUwT0dNeE1UWXhPRGM1WkRBME5UUm1NREpoWlRZeU9DSXNJbk4xWWlJNklqWXdNRFEzT0RVNE1URXdPR0U0TURBelpEa3dNakUwTWlJc0luTmpiM0JsY3lJNld5SmhjR2xmY21WaFpDSmRMQ0oyWlhKemFXOXVJam94ZlEuVlhXYV8tOHRta0lpcDRNWGVsU0xVRmhWUUJFLWJYZ1dOQWZVQWFyMFpnTQ==\""
+            buildConfigField "String", "DB_NAME", "\"MoviesDB\""
         }
     }
 
