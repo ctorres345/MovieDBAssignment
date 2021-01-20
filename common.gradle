@@ -3,11 +3,22 @@ ext.commonlibs = [:]
 commonlibs.kotlin = [
         [configuration: "implementation", dependency: dependency.kotlin.core],
         [configuration: "implementation", dependency: dependency.kotlin.coroutine],
-        [configuration: "testImplementation", dependency: dependency.kotlin.coroutine_test]
+        [configuration: "testImplementation", dependency: dependency.kotlin.coroutine_test],
+        [configuration: "testImplementation", dependency: dependency.kotlin.test]
 ]
 
 commonlibs.test = [
         [configuration: "testImplementation", dependency: dependency.test.junit],
+        [configuration: "testImplementation", dependency: dependency.test.mockK]
+]
+
+commonlibs.androidTest = [
+        [configuration: "testImplementation", dependency: dependency.core.test],
         [configuration: "androidTestImplementation", dependency: dependency.test.junit_android],
-        [configuration: "androidTestImplementation", dependency: dependency.test.espresso]
+        [configuration: "androidTestImplementation", dependency: dependency.test.espresso],
+        [configuration: "androidTestImplementation", dependency: dependency.core.test],
+        [configuration: "androidTestImplementation", dependency: dependency.test.core],
+        [configuration: "androidTestImplementation", dependency: dependency.test.runner],
+        [configuration: "androidTestImplementation", dependency: dependency.test.rules],
+        [configuration: "testImplementation", dependency: dependency.test.mockK_android]
 ]

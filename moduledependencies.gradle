@@ -20,8 +20,13 @@ ext{
             [configuration: "kapt", dependency: dependency.glide.compiler],
             [configuration: "implementation", dependency: dependency.room.runtime],
             [configuration: "implementation", dependency: dependency.room.ktx],
-            [configuration: "kapt", dependency: dependency.room.compiler]
-    ] + commonlibs.kotlin + commonlibs.test
+            [configuration: "kapt", dependency: dependency.room.compiler],
+            [configuration: "implementation", dependency: dependency.lottie.core],
+            [configuration: "androidTestImplementation", dependency: dependency.navigation.test],
+            [configuration: "debugImplementation", dependency: dependency.test.fragment],
+            [configuration: "androidTestImplementation", dependency: dependency.test.hilt],
+            [configuration: "kaptAndroidTest", dependency: dependency.test.hilt_compiler]
+    ] + commonlibs.kotlin + commonlibs.test + commonlibs.androidTest
 
     data_dependencies = [
             [configuration: "implementation", dependency: dependency.retrofit.core],
@@ -33,11 +38,12 @@ ext{
             [configuration: "kaptTest", dependency: dependency.dagger.hilt_compiler],
             [configuration: "implementation", dependency: dependency.room.runtime],
             [configuration: "implementation", dependency: dependency.room.ktx],
-            [configuration: "kapt", dependency: dependency.room.compiler]
-    ] + commonlibs.kotlin
+            [configuration: "kapt", dependency: dependency.room.compiler],
+            [configuration: "implementation", dependency: dependency.core.secureprefs]
+    ] + commonlibs.kotlin + commonlibs.test + commonlibs.androidTest
 
     domain_dependencies = [
             [configuration: "implementation", dependency: dependency.dagger.core],
             [configuration: "kapt", dependency: dependency.dagger.core_compiler]
-    ] + commonlibs.kotlin
+    ] + commonlibs.kotlin + commonlibs.test
 }

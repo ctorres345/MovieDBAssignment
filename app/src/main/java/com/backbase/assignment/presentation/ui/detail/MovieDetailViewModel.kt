@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.backbase.assignment.mapper.toUIModel
 import com.backbase.assignment.presentation.base.BaseViewModel
-import com.example.domain.model.Try
-import com.example.domain.usecase.GetMovieDetailUseCase
+import com.backbase.domain.model.Try
+import com.backbase.domain.usecase.GetMovieDetailUseCase
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel @ViewModelInject constructor(

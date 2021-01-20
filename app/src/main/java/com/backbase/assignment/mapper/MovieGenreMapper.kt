@@ -1,7 +1,7 @@
 package com.backbase.assignment.mapper
 
 import com.backbase.assignment.model.MovieGenreUIModel
-import com.example.domain.model.genre.Genre
+import com.backbase.domain.model.genre.Genre
 
 fun Genre.toUIModel() : MovieGenreUIModel {
     return MovieGenreUIModel(

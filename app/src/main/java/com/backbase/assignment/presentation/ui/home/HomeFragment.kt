@@ -16,14 +16,17 @@ import com.backbase.assignment.presentation.adapter.PopularMovieAdapter
 import com.backbase.assignment.presentation.adapter.decorator.VerticalSpacingDecorator
 import com.backbase.assignment.presentation.adapter.paging.VerticalPagingHandler
 import com.backbase.assignment.presentation.base.BaseFragment
-import com.backbase.assignment.presentation.ext.makeGone
-import com.backbase.assignment.presentation.ext.makeVisible
-import com.backbase.assignment.presentation.ext.observe
+import com.backbase.assignment.presentation.ext.*
 import com.backbase.assignment.util.BundleParams
+import com.backbase.assignment.util.ErrorDialog
+import com.backbase.assignment.util.UIVisibilityComponents
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment(), UIVisibilityComponents {
+    @Inject
+    lateinit var errorDialog: ErrorDialog
     private lateinit var binding: FragmentHomeBinding
     private lateinit var popularMovieAdapter: PopularMovieAdapter
     private lateinit var billboardAdapter: BillboardAdapter
@@ -38,14 +41,20 @@ class HomeFragment : BaseFragment() {
         return binding.root
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.dispose()
+    }
+
     override fun initUI() {
-        binding.progress.makeVisible()
+        hideContent()
+        showLoading()
         binding.popularMovieList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(VerticalSpacingDecorator(16))
             adapter = popularMovieAdapter
             val pagingHandler = VerticalPagingHandler(layoutManager as LinearLayoutManager) {
-                binding.progress.makeVisible()
+                showLoading()
                 viewModel.getNextPopularMoviePage()
             }
             addOnScrollListener(pagingHandler)
@@ -63,16 +72,33 @@ class HomeFragment : BaseFragment() {
 
     private fun onViewStateUpdated(viewState: HomeViewState?) {
         viewState?.let {
+            hideLoading()
             when(it){
                 is HomeViewState.GetMoviesSuccess -> {
+                    showContent()
                     billboardAdapter.updateMovieList(it.billboardMovies)
                     popularMovieAdapter.updateMovieList(it.popularMovies)
                 }
                 is HomeViewState.GetPopularMoviesSuccess -> popularMovieAdapter.updateMovieList(it.movies)
-                is HomeViewState.GetPopularMoviesError -> Toast.makeText(requireContext(), "Error Fetching Popular Movies", Toast.LENGTH_SHORT).show()
-                is HomeViewState.GetBillboardMoviesError -> Toast.makeText(requireContext(), "Error Fetching Billboard Movies", Toast.LENGTH_SHORT).show()
+                is HomeViewState.GetPaginatedMoviesError -> errorDialog.showErrorMessage(
+                    message = requireContext().getString(R.string.generic_error_message),
+                    negativeActionName = requireContext().getString(R.string.try_again_label),
+                    negativeAction = {
+                        showLoading()
+                        viewModel.getNextPopularMoviePage()
+                    }
+                )
+                is HomeViewState.GetPopularMoviesError,
+                is HomeViewState.GetBillboardMoviesError -> errorDialog.showErrorMessage(
+                    message = requireContext().getString(R.string.generic_error_message),
+                    negativeActionName = requireContext().getString(R.string.try_again_label),
+                    negativeAction = {
+                        showLoading()
+                        hideContent()
+                        viewModel.getMovies()
+                    }
+                )
             }
-            binding.progress.makeGone()
         }
     }
 
@@ -82,5 +108,31 @@ class HomeFragment : BaseFragment() {
             findNavController().navigate(R.id.action_homeFragment_to_movieDetailFragment, bundle)
         }
         billboardAdapter = BillboardAdapter()
+    }
+
+    override fun showLoading() {
+        binding.loading.apply {
+            makeVisible()
+            playAnimation()
+        }
+    }
+
+    override fun hideLoading() {
+        binding.loading.apply {
+            cancelAnimation()
+            makeGone()
+        }
+    }
+
+    override fun showContent() {
+        if(binding.content.isInvisible()){
+            binding.content.makeVisible()
+        }
+    }
+
+    override fun hideContent() {
+        if(binding.content.isVisible()) {
+            binding.content.makeInvisible()
+        }
     }
 }

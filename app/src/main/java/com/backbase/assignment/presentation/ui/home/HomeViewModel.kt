@@ -7,16 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.backbase.assignment.mapper.toBillboardMovie
 import com.backbase.assignment.mapper.toPopularMovie
 import com.backbase.assignment.presentation.base.BaseViewModel
-import com.example.domain.model.MovieSection
-import com.example.domain.model.Try
-import com.example.domain.usecase.GetMoviePageUseCase
+import com.backbase.domain.model.MovieSection
+import com.backbase.domain.model.Try
+import com.backbase.domain.usecase.GetMoviePageUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel @ViewModelInject constructor(
     private val getMoviePageUseCase: GetMoviePageUseCase
 ) : BaseViewModel() {
     private var currentPage = 0
-    private var maxPage = 0
+    private var maxPage : Int? = null
     private val viewState: MutableLiveData<HomeViewState> = MutableLiveData()
     val getViewState: LiveData<HomeViewState> = viewState
 
@@ -37,7 +37,7 @@ class HomeViewModel @ViewModelInject constructor(
                     return@launch
                 }
                 is Try.Success -> {
-                    maxPage = popularResult.value.totalPages
+                    if(maxPage == null) maxPage = popularResult.value.totalPages
                     currentPage++
                     popularResult.value.results.map { it.toPopularMovie() }
                 }
@@ -58,11 +58,12 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     private fun getPopularMoviePage(page: Int) {
-        if (page !in 1..maxPage) return
+        if (maxPage != null && page !in 1..maxPage!!) return
         viewModelScope.launch {
             val status = when(val popularResult = getMoviePageUseCase.execute(page = page, section = MovieSection.Popular)){
-                is Try.Failure -> HomeViewState.GetPopularMoviesError
+                is Try.Failure -> HomeViewState.GetPaginatedMoviesError
                 is Try.Success -> {
+                    if(maxPage == null) maxPage = popularResult.value.totalPages
                     currentPage++
                     HomeViewState.GetPopularMoviesSuccess(popularResult.value.results.map { it.toPopularMovie() })
                 }

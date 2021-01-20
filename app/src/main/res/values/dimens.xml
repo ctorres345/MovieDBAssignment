@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_21">21sp</dimen>
+    <dimen name="text_size_17">17sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_13">13sp</dimen>
+    <dimen name="text_size_11">11sp</dimen>
+
+    <dimen name="space_3dp">3dp</dimen>
+    <dimen name="space_4dp">4dp</dimen>
+    <dimen name="space_8dp">8dp</dimen>
+    <dimen name="space_12dp">12dp</dimen>
+    <dimen name="space_16dp">16dp</dimen>
+    <dimen name="space_24dp">24dp</dimen>
+    <dimen name="space_32dp">32dp</dimen>
+    <dimen name="space_42dp">42dp</dimen>
+
+    <dimen name="general_corner_radius">6dp</dimen>
+
+    <!-- Error Dialog -->
+    <dimen name="error_dialog_icon_height">120dp</dimen>
+    <dimen name="error_dialog_icon_width">120dp</dimen>
+
+    <!-- Loading -->
+    <dimen name="loading_icon_height">120dp</dimen>
+    <dimen name="loading_icon_width">120dp</dimen>
+
+    <!-- Movie Detail -->
+    <dimen name="movie_detail_poster_height">278dp</dimen>
+    <dimen name="movie_detail_poster_width">185dp</dimen>
+
+    <!-- Billboard -->
+    <dimen name="billboard_poster_height">231dp</dimen>
+    <dimen name="billboard_poster_width">154dp</dimen>
+
+    <!-- Popular Movie -->
+    <dimen name="popular_movie_poster_height">138dp</dimen>
+    <dimen name="popular_movie_poster_width">92dp</dimen>
+    <dimen name="popular_movie_poster_rating_size">40dp</dimen>
+
+</resources>
