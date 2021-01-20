@@ -7,13 +7,13 @@ import com.backbase.assignment.presentation.ext.toReleaseDate
 import com.backbase.domain.model.movie.Movie
 import java.math.BigDecimal
 import java.math.RoundingMode
+import kotlin.math.roundToInt
 
 fun Movie.toPopularMovie() : PopularMovieUIModel {
     return PopularMovieUIModel(
         id = id,
         releaseDate = releaseDate.toDate()?.toReleaseDate() ?: releaseDate,
         title = title,
-        duration = "1h",
         posterImage = posterPath ?: "",
         roundedPopularity = getRoundedRating(),
         progressPopularity = getProgressRating()
@@ -31,5 +31,5 @@ fun Movie.getProgressRating() : Float {
 }
 
 fun Movie.getRoundedRating() : Int {
-    return voteAverage.times(BigDecimal.TEN).toInt()
+    return voteAverage.toFloat().times(10f).roundToInt()
 }

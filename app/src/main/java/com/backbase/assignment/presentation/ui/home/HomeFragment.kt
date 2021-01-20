@@ -81,8 +81,8 @@ class HomeFragment : BaseFragment(), UIVisibilityComponents {
                 }
                 is HomeViewState.GetPopularMoviesSuccess -> popularMovieAdapter.updateMovieList(it.movies)
                 is HomeViewState.GetPaginatedMoviesError -> errorDialog.showErrorMessage(
-                    message = "An unexpected error has ocurred. Please Try Again",
-                    negativeActionName = "Try Again",
+                    message = requireContext().getString(R.string.generic_error_message),
+                    negativeActionName = requireContext().getString(R.string.try_again_label),
                     negativeAction = {
                         showLoading()
                         viewModel.getNextPopularMoviePage()
@@ -90,8 +90,8 @@ class HomeFragment : BaseFragment(), UIVisibilityComponents {
                 )
                 is HomeViewState.GetPopularMoviesError,
                 is HomeViewState.GetBillboardMoviesError -> errorDialog.showErrorMessage(
-                    message = "An unexpected error has ocurred. Please Try Again",
-                    negativeActionName = "Try Again",
+                    message = requireContext().getString(R.string.generic_error_message),
+                    negativeActionName = requireContext().getString(R.string.try_again_label),
                     negativeAction = {
                         showLoading()
                         hideContent()

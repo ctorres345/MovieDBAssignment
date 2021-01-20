@@ -83,8 +83,8 @@ class MovieDetailFragment : BaseDialogFragment(), UIVisibilityComponents {
                 }
                 is MovieDetailViewState.GetMovieDetailError -> {
                     errorDialog.showErrorMessage(
-                        message = "Unexpected error has ocurred. Please Try Again",
-                        negativeActionName = "Try Again",
+                        message = requireContext().getString(R.string.generic_error_message),
+                        negativeActionName = requireContext().getString(R.string.try_again_label),
                         negativeAction = {
                             showLoading()
                             hideContent()
@@ -107,7 +107,7 @@ class MovieDetailFragment : BaseDialogFragment(), UIVisibilityComponents {
                 .into(binding.poster)
             binding.movieTitle.text = title
             binding.overview.text = overview
-            binding.movieDetail.text = "${releaseDate} - ${duration}"
+            binding.movieDetail.text = requireContext().getString(R.string.movie_detail_movie_date_duration, releaseDate, duration)
             binding.genreList.adapter = GenreAdapter(genres)
         }
     }

@@ -21,7 +21,11 @@ ext{
             [configuration: "implementation", dependency: dependency.room.runtime],
             [configuration: "implementation", dependency: dependency.room.ktx],
             [configuration: "kapt", dependency: dependency.room.compiler],
-            [configuration: "implementation", dependency: dependency.lottie.core]
+            [configuration: "implementation", dependency: dependency.lottie.core],
+            [configuration: "androidTestImplementation", dependency: dependency.navigation.test],
+            [configuration: "debugImplementation", dependency: dependency.test.fragment],
+            [configuration: "androidTestImplementation", dependency: dependency.test.hilt],
+            [configuration: "kaptAndroidTest", dependency: dependency.test.hilt_compiler]
     ] + commonlibs.kotlin + commonlibs.test + commonlibs.androidTest
 
     data_dependencies = [
@@ -34,7 +38,8 @@ ext{
             [configuration: "kaptTest", dependency: dependency.dagger.hilt_compiler],
             [configuration: "implementation", dependency: dependency.room.runtime],
             [configuration: "implementation", dependency: dependency.room.ktx],
-            [configuration: "kapt", dependency: dependency.room.compiler]
+            [configuration: "kapt", dependency: dependency.room.compiler],
+            [configuration: "implementation", dependency: dependency.core.secureprefs]
     ] + commonlibs.kotlin + commonlibs.test + commonlibs.androidTest
 
     domain_dependencies = [

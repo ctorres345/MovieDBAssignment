@@ -1,8 +1,11 @@
-package com.backbase.data
+package com.backbase.data.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Base64
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
+import com.backbase.data.BuildConfig
 import com.backbase.data.util.Preferences
 import com.backbase.data.util.SHARED_PREFERENCES_APP
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -13,7 +16,14 @@ import javax.inject.Singleton
 class SessionManager @Inject constructor(@ApplicationContext private val context: Context) {
 
     private val sp : SharedPreferences by lazy {
-        context.getSharedPreferences(SHARED_PREFERENCES_APP, Context.MODE_PRIVATE)
+        val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        EncryptedSharedPreferences.create(
+            SHARED_PREFERENCES_APP,
+            masterKeyAlias,
+            context,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
     }
 
     /**
