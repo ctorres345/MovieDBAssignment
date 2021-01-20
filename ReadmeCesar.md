@@ -119,6 +119,24 @@ up well. There's a lot of things I could improve but due to the time
 frame I wanted to cover just the base scope first and work on more stuff
 later based on that.
 
+Regarding the rating view I had two options, create it based on a simple
+view and draw it with canvas or extend the progress bar. Since I've done
+something similar in another project I used the first approach by
+playing with those 2 circle shape and different colors by multiplying
+one with a progress value from 0 to 1 to make the design like a progress
+bar.
+
+Regarding the paging approach is just a simple pagination mechanism by
+also storing the maxPages that comes from any movie list response and
+performing request using a custom class that extends from
+RecyclerView.OnScrollListener. There I just played with a flag and the
+item count in order to trigger the pagination event and call the use
+case when needed.
+
+Also not part of the scope but I stored the date when the values are
+being added in order to ask for new data once that date has overdue.
+This would cover data refreshing.
+
 ## Observations
 
 * The duration of movies, or runtime as it is called by the API, doesn't
