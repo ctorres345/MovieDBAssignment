@@ -25,3 +25,4 @@ versions.hilt = "2.30.1-alpha"
 versions.hilt_x = "1.0.0-alpha02"
 
 versions.glide = "4.11.0"
+versions.room = "2.2.6"

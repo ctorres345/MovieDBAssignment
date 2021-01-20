@@ -17,12 +17,12 @@
 
     </fragment>
 
-    <fragment
+    <dialog
         android:id="@+id/movieDetailFragment"
         android:name="com.backbase.assignment.presentation.ui.detail.MovieDetailFragment"
         android:label="fragment_movie_detail"
         tools:layout="@layout/fragment_movie_detail">
 
-    </fragment>
+    </dialog>
 
 </navigation>

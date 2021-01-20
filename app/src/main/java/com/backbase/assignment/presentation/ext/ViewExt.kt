@@ -1,14 +1,15 @@
 package com.backbase.assignment.presentation.ext
 
 import android.view.View
+import com.backbase.assignment.util.DebounceClickListener
 
-fun View.makeVisible() {
+internal fun View.makeVisible() {
     visibility = View.VISIBLE
 }
 
-fun View.isVisible() = visibility == View.VISIBLE
+internal fun View.isVisible() = visibility == View.VISIBLE
 
-fun View.makeVisibleElseGone(makeVisible: Boolean) {
+internal fun View.makeVisibleElseGone(makeVisible: Boolean) {
     visibility = if (makeVisible) {
         View.VISIBLE
     } else {
@@ -16,7 +17,7 @@ fun View.makeVisibleElseGone(makeVisible: Boolean) {
     }
 }
 
-fun View.makeVisibleElseInvisible(makeVisible: Boolean) {
+internal fun View.makeVisibleElseInvisible(makeVisible: Boolean) {
     visibility = if (makeVisible) {
         View.VISIBLE
     } else {
@@ -24,12 +25,16 @@ fun View.makeVisibleElseInvisible(makeVisible: Boolean) {
     }
 }
 
-fun View.makeGone() {
+internal fun View.makeGone() {
     visibility = View.GONE
 }
 
-fun View.isGone() = visibility == View.GONE
+internal fun View.isGone() = visibility == View.GONE
 
-fun View.makeInvisible() {
+internal fun View.makeInvisible() {
     visibility = View.INVISIBLE
 }
+
+fun View.setDebounceOnClickListener(doClick: (View) -> Unit) = setOnClickListener(
+    DebounceClickListener(doClick = doClick)
+)
