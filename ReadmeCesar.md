@@ -65,21 +65,26 @@ Basic libraries for android projects including some Jetpack Compose suit
 * Android Security Library -> For Shared Preferences secure storage
 
 For Networking
+
 * Retrofit2 -> For basic networking management
 * OkHttp3 -> For basic networking management and loging
 * GSON -> For basic networking management and model management
 
 For Dependency Injection
+
 * Dagger
 * Hilt
 
 For Image Loading and Management
+
 * Glide
 
 Extra UI Libraries
+
 * Lottie -> To handle animations used in the loading and error dialog
 
 For Testing
+
 * Mockk -> To mock dependencies
 * AndroidX Testing Libraries -> For base classes and extensions
 
