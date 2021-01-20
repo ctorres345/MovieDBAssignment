@@ -59,3 +59,7 @@ room.runtime = "androidx.room:room-runtime:${versions.room}"
 room.compiler = "androidx.room:room-compiler:${versions.room}"
 room.ktx = "androidx.room:room-ktx:${versions.room}"
 dependency.room = room
+
+def lottie = [:]
+lottie.core = "com.airbnb.android:lottie:${versions.lottie}"
+dependency.lottie = lottie

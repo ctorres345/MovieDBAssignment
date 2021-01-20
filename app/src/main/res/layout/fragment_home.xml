@@ -5,17 +5,14 @@
     android:background="@color/home_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Moviebox"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="12dp"
-        android:background="@color/popular_movie_background"
-        android:textColor="@color/movie_yellow"
-        style="@style/TextAppearance.MaterialComponents.Headline4"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/ic_logo_movie"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +25,9 @@
         android:layout_height="wrap_content"
         android:text="Playing Now"
         android:padding="12dp"
-        android:textColor="@color/movie_yellow"
-        app:layout_constraintTop_toBottomOf="@id/title"
+        android:textColor="@color/colorPrimary"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/billboardList"/>
@@ -49,7 +47,8 @@
         android:layout_height="wrap_content"
         android:text="Most Popular"
         android:padding="12dp"
-        android:textColor="@color/movie_yellow"
+        android:textColor="@color/colorPrimary"
+        style="@style/TextAppearance.MaterialComponents.Headline6"
         app:layout_constraintTop_toBottomOf="@id/billboardList"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,11 +63,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <ProgressBar
-        android:id="@+id/progress"
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:visibility="invisible"
+        app:constraint_referenced_ids="logo,billboardList,billboardTitle,popularMovieList,popularTitle"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:visibility="visible"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

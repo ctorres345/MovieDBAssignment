@@ -3,6 +3,7 @@ package com.backbase.assignment.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.backbase.assignment.R
 import com.backbase.assignment.databinding.ItemBillboardMovieBinding
 import com.backbase.assignment.model.BillboardMovieUIModel
 import com.bumptech.glide.Glide
@@ -31,7 +32,10 @@ class BillboardAdapter(
 
     inner class MovieViewHolder(private val binding: ItemBillboardMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: BillboardMovieUIModel) {
-            Glide.with(binding.root).load(movie.posterImage).into(binding.poster)
+            Glide.with(binding.root)
+                .load(movie.posterImage)
+                .placeholder(R.drawable.ic_movie_poster_placeholder)
+                .into(binding.poster)
         }
     }
 }

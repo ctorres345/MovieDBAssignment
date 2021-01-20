@@ -4,7 +4,7 @@ import com.backbase.assignment.model.BillboardMovieUIModel
 import com.backbase.assignment.model.PopularMovieUIModel
 import com.backbase.assignment.presentation.ext.toDate
 import com.backbase.assignment.presentation.ext.toReleaseDate
-import com.example.domain.model.movie.Movie
+import com.backbase.domain.model.movie.Movie
 import java.math.BigDecimal
 import java.math.RoundingMode
 

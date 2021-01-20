@@ -3,6 +3,7 @@ package com.backbase.assignment.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.backbase.assignment.R
 import com.backbase.assignment.databinding.ItemMovieBinding
 import com.backbase.assignment.model.PopularMovieUIModel
 import com.backbase.assignment.presentation.ext.setDebounceOnClickListener
@@ -37,7 +38,10 @@ class PopularMovieAdapter(
             binding.releaseDate.text = movie.releaseDate
             binding.ratingProgress.setProgress(movie.progressPopularity)
             binding.rating.text = movie.roundedPopularity.toString()
-            Glide.with(binding.root).load(movie.posterImage).into(binding.poster)
+            Glide.with(binding.root)
+                .load(movie.posterImage)
+                .placeholder(R.drawable.ic_movie_poster_placeholder)
+                .into(binding.poster)
             binding.root.setDebounceOnClickListener {
                 onMovieSelectedListener.invoke(movie)
             }

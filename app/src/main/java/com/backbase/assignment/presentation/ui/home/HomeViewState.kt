@@ -11,4 +11,5 @@ sealed class HomeViewState {
     data class GetPopularMoviesSuccess(val movies: List<PopularMovieUIModel>) : HomeViewState()
     object GetBillboardMoviesError : HomeViewState()
     object GetPopularMoviesError : HomeViewState()
+    object GetPaginatedMoviesError : HomeViewState()
 }

@@ -20,7 +20,8 @@ ext{
             [configuration: "kapt", dependency: dependency.glide.compiler],
             [configuration: "implementation", dependency: dependency.room.runtime],
             [configuration: "implementation", dependency: dependency.room.ktx],
-            [configuration: "kapt", dependency: dependency.room.compiler]
+            [configuration: "kapt", dependency: dependency.room.compiler],
+            [configuration: "implementation", dependency: dependency.lottie.core]
     ] + commonlibs.kotlin + commonlibs.test
 
     data_dependencies = [

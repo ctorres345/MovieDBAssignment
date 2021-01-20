@@ -35,6 +35,8 @@ internal fun View.makeInvisible() {
     visibility = View.INVISIBLE
 }
 
+internal fun View.isInvisible() = visibility == View.INVISIBLE
+
 fun View.setDebounceOnClickListener(doClick: (View) -> Unit) = setOnClickListener(
     DebounceClickListener(doClick = doClick)
 )
