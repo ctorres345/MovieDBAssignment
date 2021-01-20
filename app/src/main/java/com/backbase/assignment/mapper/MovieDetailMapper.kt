@@ -8,7 +8,6 @@ import com.backbase.domain.model.moviedetail.MovieDetail
 fun MovieDetail.toUIModel() : MovieDetailUIModel {
     return MovieDetailUIModel(
         id = id,
-        adult = adult,
         genres = genres.map { it.toUIModel() },
         overview = overview ?: "",
         posterPath = posterPath ?: "",

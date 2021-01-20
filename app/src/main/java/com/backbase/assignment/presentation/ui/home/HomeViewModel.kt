@@ -1,6 +1,5 @@
 package com.backbase.assignment.presentation.ui.home
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,7 +16,7 @@ class HomeViewModel @ViewModelInject constructor(
     private val getMoviePageUseCase: GetMoviePageUseCase
 ) : BaseViewModel() {
     private var currentPage = 0
-    private var maxPage = 0
+    private var maxPage : Int? = null
     private val viewState: MutableLiveData<HomeViewState> = MutableLiveData()
     val getViewState: LiveData<HomeViewState> = viewState
 
@@ -27,7 +26,6 @@ class HomeViewModel @ViewModelInject constructor(
             val billboardMovies = when(val billboardResult = getMoviePageUseCase.execute(page = 1, section = MovieSection.Billboard)){
                 is Try.Failure -> {
                     viewState.postValue(HomeViewState.GetBillboardMoviesError)
-                    Log.e("HOME", billboardResult.cause.exception.message, billboardResult.cause.exception)
                     return@launch
                 }
                 is Try.Success -> billboardResult.value.results.map { it.toBillboardMovie() }
@@ -36,11 +34,10 @@ class HomeViewModel @ViewModelInject constructor(
             val popularMovies = when(val popularResult = getMoviePageUseCase.execute(page = 1, section = MovieSection.Popular)){
                 is Try.Failure -> {
                     viewState.postValue(HomeViewState.GetPopularMoviesError)
-                    Log.e("HOME", popularResult.cause.exception.message, popularResult.cause.exception)
                     return@launch
                 }
                 is Try.Success -> {
-                    maxPage = popularResult.value.totalPages
+                    if(maxPage == null) maxPage = popularResult.value.totalPages
                     currentPage++
                     popularResult.value.results.map { it.toPopularMovie() }
                 }
@@ -61,11 +58,12 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     private fun getPopularMoviePage(page: Int) {
-        if (page !in 1..maxPage) return
+        if (maxPage != null && page !in 1..maxPage!!) return
         viewModelScope.launch {
             val status = when(val popularResult = getMoviePageUseCase.execute(page = page, section = MovieSection.Popular)){
                 is Try.Failure -> HomeViewState.GetPaginatedMoviesError
                 is Try.Success -> {
+                    if(maxPage == null) maxPage = popularResult.value.totalPages
                     currentPage++
                     HomeViewState.GetPopularMoviesSuccess(popularResult.value.results.map { it.toPopularMovie() })
                 }

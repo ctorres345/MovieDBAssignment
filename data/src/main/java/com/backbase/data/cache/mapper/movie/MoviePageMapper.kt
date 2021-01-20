@@ -18,17 +18,11 @@ fun MovieEntity.toDomainModel() : Movie {
     return Movie(
         id = movieId,
         title = title,
-        originalTitle = originalTitle,
         overview = overview,
         releaseDate = releaseDate,
-        originalLanguage = originalLanguage,
         posterPath = posterPath,
         backdropPath = backdropPath,
-        voteCount = voteCount,
         voteAverage = voteAverage.toBigDecimal(),
-        popularity = popularity.toBigDecimal(),
-        adult = adult,
-        video = video,
         genreIds = emptyList()
     )
 }
@@ -47,17 +41,11 @@ fun Movie.toRoomModel(pageId: Int) : MovieEntity {
     return MovieEntity(
         movieId = id,
         title = title,
-        originalTitle = originalTitle,
         overview = overview,
         releaseDate = releaseDate,
-        originalLanguage = originalLanguage,
         posterPath = posterPath,
         backdropPath = backdropPath,
-        voteCount = voteCount,
         voteAverage = voteAverage.toDouble(),
-        popularity = popularity.toDouble(),
-        adult = adult,
-        video = video,
         pageId = pageId
     )
 }

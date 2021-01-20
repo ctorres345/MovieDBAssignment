@@ -3,6 +3,7 @@ ext.dependency = [:]
 def kotlin = [:]
 kotlin.classpath = "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
 kotlin.core = "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:${versions.kotlin}"
 kotlin.coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlin_coroutine}"
 kotlin.coroutine_test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlin_coroutine}"
 dependency.kotlin = kotlin
@@ -13,12 +14,15 @@ core.app_compat = "androidx.appcompat:appcompat:${versions.appCompat}"
 core.fragment_ktx = "androidx.fragment:fragment-ktx:${versions.fragment_ktx}"
 core.material = "com.google.android.material:material:${versions.material}"
 core.constraint = "androidx.constraintlayout:constraintlayout:${versions.constraint}"
+core.test = "androidx.arch.core:core-testing:${versions.ax_core_test}"
 dependency.core = core
 
 def test = [:]
 test.junit = "junit:junit:${versions.junit}"
 test.junit_android = "androidx.test.ext:junit:${versions.junit_adroid}"
 test.espresso = "androidx.test.espresso:espresso-core:${versions.espresso}"
+test.mockK = "io.mockk:mockk:${versions.mockk}"
+test.mockK_android = "io.mockk:mockk-android:${versions.mockk}"
 dependency.test = test
 
 def navigation = [:]

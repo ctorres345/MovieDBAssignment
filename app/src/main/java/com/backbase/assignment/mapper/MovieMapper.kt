@@ -11,7 +11,6 @@ import java.math.RoundingMode
 fun Movie.toPopularMovie() : PopularMovieUIModel {
     return PopularMovieUIModel(
         id = id,
-        adult = adult,
         releaseDate = releaseDate.toDate()?.toReleaseDate() ?: releaseDate,
         title = title,
         duration = "1h",

@@ -22,7 +22,7 @@ ext{
             [configuration: "implementation", dependency: dependency.room.ktx],
             [configuration: "kapt", dependency: dependency.room.compiler],
             [configuration: "implementation", dependency: dependency.lottie.core]
-    ] + commonlibs.kotlin + commonlibs.test
+    ] + commonlibs.kotlin + commonlibs.test + commonlibs.androidTest
 
     data_dependencies = [
             [configuration: "implementation", dependency: dependency.retrofit.core],
@@ -35,10 +35,10 @@ ext{
             [configuration: "implementation", dependency: dependency.room.runtime],
             [configuration: "implementation", dependency: dependency.room.ktx],
             [configuration: "kapt", dependency: dependency.room.compiler]
-    ] + commonlibs.kotlin
+    ] + commonlibs.kotlin + commonlibs.test + commonlibs.androidTest
 
     domain_dependencies = [
             [configuration: "implementation", dependency: dependency.dagger.core],
             [configuration: "kapt", dependency: dependency.dagger.core_compiler]
-    ] + commonlibs.kotlin
+    ] + commonlibs.kotlin + commonlibs.test
 }

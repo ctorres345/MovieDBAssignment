@@ -1,17 +1,13 @@
 package com.backbase.assignment.di
 
 import com.backbase.data.repository.configuration.ConfigurationRepositoryImpl
-import com.backbase.data.repository.genre.GenreRepositoryImpl
 import com.backbase.data.repository.movie.MovieRepositoryImpl
 import com.backbase.data.repository.moviedetail.MovieDetailRepositoryImpl
 import com.backbase.domain.repository.configuration.ConfigurationRepository
-import com.backbase.domain.repository.genre.GenreRepository
 import com.backbase.domain.repository.movie.MovieRepository
 import com.backbase.domain.repository.moviedetail.MovieDetailRepository
-import com.backbase.domain.usecase.GetGenresUseCase
 import com.backbase.domain.usecase.GetMovieDetailUseCase
 import com.backbase.domain.usecase.GetMoviePageUseCase
-import com.backbase.domain.usecase.impl.GetGenresUseCaseImpl
 import com.backbase.domain.usecase.impl.GetMovieDetailUseCaseImpl
 import com.backbase.domain.usecase.impl.GetMoviePageUseCaseImpl
 import dagger.Binds
@@ -30,13 +26,7 @@ abstract class MainModule {
     abstract fun providesGetMoviePageUseCase(moviePageUseCase: GetMoviePageUseCaseImpl): GetMoviePageUseCase
 
     @Binds
-    abstract fun providesGetGenresUseCase(genresUseCase: GetGenresUseCaseImpl): GetGenresUseCase
-
-    @Binds
     abstract fun provideConfigurationRepository(configurationRepository: ConfigurationRepositoryImpl) : ConfigurationRepository
-
-    @Binds
-    abstract fun provideGenreRepository(genreRepository: GenreRepositoryImpl) : GenreRepository
 
     @Binds
     abstract fun provideMovieRepository(movieRepository: MovieRepositoryImpl) : MovieRepository

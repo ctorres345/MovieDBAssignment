@@ -13,15 +13,8 @@ fun MovieDetailEntity.toDomainModel(genres: List<MovieGenreEntity>) : MovieDetai
         releaseDate = releaseDate,
         posterPath = posterPath,
         genres = genres.map { it.toDomainModel() },
-        voteCount = voteCount,
         voteAverage = voteAverage.toBigDecimal(),
-        popularity = popularity?.toBigDecimal(),
-        adult = adult,
         backdropPath = backdropPath,
-        originalLanguage = originalLanguage,
-        originalTitle = originalTitle,
-        status = status,
-        video = video,
         runtime = runtime
     )
 }
@@ -40,15 +33,8 @@ fun MovieDetail.toRoomModel(dueDate: Long) : MovieDetailEntity {
         overview = overview,
         releaseDate = releaseDate,
         posterPath = posterPath,
-        voteCount = voteCount,
         voteAverage = voteAverage.toDouble(),
-        popularity = popularity?.toDouble(),
-        adult = adult,
         backdropPath = backdropPath,
-        originalLanguage = originalLanguage,
-        originalTitle = originalTitle,
-        status = status,
-        video = video,
         runtime = runtime,
         dueDate = dueDate
     )

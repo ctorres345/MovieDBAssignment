@@ -25,11 +25,11 @@ class GetMoviePageUseCaseImpl(
     override suspend fun execute(page: Int, section: MovieSection): Try<MoviePage> {
         return withContext(dispatcherProvider.io()) {
             try {
+                val imageConfig = configurationRepository.getConfiguration()
                 val moviePage = movieRepository.getMoviePageForSection(
                     page = page,
                     section = section
                 )
-                val imageConfig = configurationRepository.getConfiguration()
                 moviePage.results = moviePage.results.configureMovieImages(imageConfig)
                 Try.Success(moviePage)
             } catch (ex: Exception) {

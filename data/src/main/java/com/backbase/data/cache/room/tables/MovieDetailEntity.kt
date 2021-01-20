@@ -16,15 +16,8 @@ data class MovieDetailEntity(
     @ColumnInfo(name = "overview") var overview: String?,
     @ColumnInfo(name = "release_date") var releaseDate: String,
     @ColumnInfo(name = "poster_path") var posterPath: String?,
-    @ColumnInfo(name = "vote_count") var voteCount: Int,
     @ColumnInfo(name = "vote_average") var voteAverage: Double,
-    @ColumnInfo(name = "popularity") var popularity: Double?,
-    @ColumnInfo(name = "adult") var adult: Boolean,
     @ColumnInfo(name = "backdrop_path") var backdropPath: String?,
-    @ColumnInfo(name = "original_language") var originalLanguage: String,
-    @ColumnInfo(name = "original_title") var originalTitle: String,
-    @ColumnInfo(name = "status") var status: String,
     @ColumnInfo(name = "runtime") var runtime: Int?,
-    @ColumnInfo(name = "video") var video: Boolean,
     @ColumnInfo(name = "duedate") var dueDate: Long
 )
