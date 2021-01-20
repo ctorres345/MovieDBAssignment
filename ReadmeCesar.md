@@ -8,6 +8,7 @@ Backbase
 With an already created project, implement the following requirements
 
 UI
+
 * Create UI for MovieListScreen and MovieDetailScreen
 * MovieListScreen should display a two list, One for "Playing Now" and
   the other for "Popular" movies
@@ -21,6 +22,7 @@ UI
   display the rating of a movie
 
 Data Management
+
 * Write network implementation to fetch and parse the obtained JSON from
   The Movie Database API and render it on the UI
 * Implement data cache saving mechanism to store data for smooth usage
@@ -28,9 +30,11 @@ Data Management
 * Implement paging mechanism for popular movie data fetch
 
 Test
+
 * Provide UI/Unit Test
 
 Limitations
+
 * 3rd party libraries are allowed except for replacing the purpose of
   the RatingView
 
@@ -50,6 +54,7 @@ The layers are the following.
 ## Libraries Used
 
 Basic libraries for android projects including some Jetpack Compose suit
+
 * Kotlin Coroutines -> Used across all modules
 * Android Material Library -> For Material Themes in some views
 * Constraint Layout -> To usage in layouts
